@@ -2,11 +2,14 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://aditi-jain1.github.io/portfolio",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build && next export",
+    "deploy": "npm run export && gh-pages -d out"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -20,11 +23,5 @@
     "@types/react-dom": "^19",
     "@tailwindcss/postcss": "^4",
     "tailwindcss": "^4"
-  },
-  "homepage": "https://<your-username>.github.io/<repo-name>",
-  "scripts": {
-    "export": "next build && next export",
-    "deploy": "npm run export && gh-pages -d out"
   }
-
 }
