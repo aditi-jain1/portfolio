@@ -1,12 +1,18 @@
 .mesh-wrapper {
-    position: relative;
+    position: fixed;
     height: 100vh;
     width: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #99ffe9;
+    background-color: #edf1fb;
+    transform: translateZ(0);
+    will-change: transform;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
   
   .mesh-gradient-background {
@@ -15,33 +21,26 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-color: #99ffe9;
+    background-color: #edf1fb;
     background-image:
-      radial-gradient(at 96% 74%, hsla(81,70%,68%,1) 0px, transparent 50%),
-      radial-gradient(at 18% 11%, hsla(22,98%,75%,1) 0px, transparent 50%),
-      radial-gradient(at 3% 69%, hsla(5,91%,78%,1) 0px, transparent 50%),
-      radial-gradient(at 62% 56%, hsla(19,78%,60%,1) 0px, transparent 50%),
-      radial-gradient(at 48% 0%, hsla(167,60%,65%,1) 0px, transparent 50%),
-      radial-gradient(at 60% 35%, hsla(206,96%,71%,1) 0px, transparent 50%),
-      radial-gradient(at 23% 59%, hsla(156,82%,73%,1) 0px, transparent 50%);
+      radial-gradient(at 96% 74%, #edf1fb(217, 90%, 20%) 0px, transparent 50%),
+      radial-gradient(at 18% 11%, #edf1fb(199, 98%, 15%, 1) 0px, transparent 50%),
+      radial-gradient(at 60% 35%, #edf1fb(210, 96%, 20%, 1) 0px, transparent 50%),
+      radial-gradient(at 23% 59%, #edf1fb(192, 82%, 15%, 1) 0px, transparent 50%);
     background-size: 150% 150%;
-    filter: blur(80px);
-    animation: moveBackground 30s linear infinite;
+    filter: blur(40px);
+    transform: translateZ(0);
+    will-change: transform;
+    animation: moveBackground 45s ease-in-out infinite;
     z-index: 1;
   }
   
   @keyframes moveBackground {
-    0% { background-size: 100% 100%; }
-    10% { background-size: 120% 80%; }
-    20% { background-size: 190% 140%; }
-    30% { background-size: 130% 110%; }
-    40% { background-size: 150% 120%; }
-    50% { background-size: 180% 100%; }
-    60% { background-size: 220% 80%; }
-    70% { background-size: 100% 50%; }
-    80% { background-size: 120% 70%; }
-    90% { background-size: 110% 90%; }
-    100% { background-size: 100% 100%; }
+    0% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(1.1); }
+    75% { transform: scale(1.3); }
+    100% { transform: scale(1); }
   }
   
   .overlay-text {
@@ -55,6 +54,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
+    will-change: transform;
   }
   
   .typewriter {
