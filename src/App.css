@@ -39,67 +39,31 @@
 
 /* Theme Variables */
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --text-primary: #334155;
-  --text-secondary: #475569;
-  --accent-color: #7c3aed;
-  --border-color: rgba(124, 58, 237, 0.1);
-  --card-bg: rgba(255, 255, 255, 0.7);
-  --shadow-color: rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="dark"] {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --accent-color: #a78bfa;
-  --border-color: rgba(167, 139, 250, 0.1);
-  --card-bg: rgba(30, 41, 59, 0.7);
+  --bg-primary: #1a1b26;
+  --bg-secondary: #24283b;
+  --text-primary: #a9b1d6;
+  --text-secondary: #7aa2f7;
+  --accent-color: #7dcfff;
+  --border-color: rgba(125, 207, 255, 0.1);
+  --card-bg: rgba(36, 40, 59, 0.7);
   --shadow-color: rgba(0, 0, 0, 0.2);
+  --terminal-green: #9ece6a;
+  --terminal-yellow: #e0af68;
+  --terminal-red: #f7768e;
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px var(--shadow-color);
-  color: var(--text-primary);
-}
-
-.theme-toggle:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px var(--shadow-color);
-  color: var(--accent-color);
-}
-
-.theme-toggle i {
-  transition: transform 0.3s ease;
-}
-
+/* Remove theme toggle button styles */
+.theme-toggle,
+.theme-toggle:hover,
+.theme-toggle i,
 .theme-toggle:hover i {
-  transform: rotate(30deg);
+  display: none;
 }
 
 /* Update html background */
 html {
   scroll-behavior: smooth;
   background-color: var(--bg-primary);
-  transition: background-color 0.3s ease;
 }
 
 /* Update app container background */
@@ -177,7 +141,7 @@ html {
 .semester-card {
   background: var(--card-bg);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem;
   border: 1px solid var(--border-color);
   box-shadow: 0 2px 4px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -185,10 +149,86 @@ html {
 
 .semester-card h3 {
   color: var(--accent-color);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.degree {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.date, .gpa {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.societies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.society-tag {
+  background: rgba(125, 207, 255, 0.1);
+  border: 1px solid var(--accent-color);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  color: var(--accent-color);
+}
+
+.semester-card h4 {
+  color: var(--terminal-yellow);
+  font-size: 1.2rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.course-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.course-list li {
+  color: var(--text-primary);
+  padding: 0.3rem 0;
+  position: relative;
+}
+
+/* Remove the bullet point styles */
+.course-list li::before {
+  display: none;
+}
+
+.course-list a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.course-list a:hover {
+  background: rgba(125, 207, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.course-code {
+  font-family: 'Fira Code', monospace;
+  color: var(--terminal-yellow);
+  font-weight: 600;
+  margin-right: 1rem;
+  min-width: 80px;
 }
 
 .course-name {
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 /* Remove weather animation styles */
@@ -306,20 +346,22 @@ html {
 .image-placeholder {
   width: 200px;
   height: 200px;
-  background: rgba(124, 58, 237, 0.05);
+  background: var(--bg-secondary);
   border-radius: 50%;
   overflow: hidden;
   position: relative;
-  border: 2px solid rgba(124, 58, 237, 0.1);
+  border: 2px solid var(--accent-color);
   margin-bottom: 1.5rem;
   transition: transform 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 20px rgba(125, 207, 255, 0.1);
 }
 
 .image-placeholder:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(125, 207, 255, 0.2);
 }
 
 .image-overlay {
@@ -331,37 +373,51 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.7);
+  background: linear-gradient(
+    135deg,
+    rgba(36, 40, 59, 0.9),
+    rgba(26, 27, 38, 0.9)
+  );
   color: var(--accent-color);
+  font-family: 'Fira Code', monospace;
   font-size: 1.2rem;
+  border-radius: 50%;
+}
+
+.image-overlay span {
+  padding: 1rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  background: rgba(125, 207, 255, 0.1);
 }
 
 /* Navigation Buttons */
 .nav-buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1.5rem;
   justify-content: center;
-  width: 100%;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
 .nav-buttons button {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Fira Code', monospace;
+  text-align: left;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  background: var(--card-bg);
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 4px var(--shadow-color);
+  white-space: nowrap;
+  min-width: 180px;
+  justify-content: flex-start;
 }
 
 .nav-buttons button::before {
@@ -373,7 +429,7 @@ html {
   height: 100%;
   background: var(--accent-color);
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
   z-index: -1;
 }
 
@@ -381,28 +437,34 @@ html {
   color: var(--bg-primary);
   transform: translateY(-2px);
   border-color: var(--accent-color);
-  box-shadow: 0 4px 6px var(--shadow-color);
 }
 
 .nav-buttons button:hover::before {
-  opacity: 1;
+  opacity: 0.2;
 }
 
-.nav-buttons button i {
-  font-size: 1rem;
-  transition: transform 0.2s ease;
+.nav-buttons .prompt {
+  color: var(--terminal-green);
+  font-weight: bold;
 }
 
-.nav-buttons button:hover i {
-  transform: translateY(-2px);
+[data-theme="dark"] .nav-buttons .prompt {
+  color: #4ade80;
 }
 
 /* Section Styles */
 .section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  font-family: 'Fira Code', monospace;
   color: var(--accent-color);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.section h2::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--terminal-green);
 }
 
 /* Cards Grid Layout */
@@ -493,25 +555,36 @@ html {
   margin-top: 1.5rem;
 }
 
-.semester {
-  background: rgba(30, 41, 59, 0.7);
+.semester-card {
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 1.5rem;
-  border: 1px solid rgba(56, 189, 248, 0.1);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.semester h3 {
-  font-size: 1.8rem;
+.semester-card h3 {
+  color: var(--accent-color);
+  font-size: 1.4rem;
   margin-bottom: 1rem;
-  color: #38bdf8;
 }
 
-.course-code {
-  font-family: 'Fira Code', monospace;
-  color: #059669;
-  font-weight: 600;
-  margin-right: 1rem;
-  min-width: 80px;
+.course-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.course-list li {
+  color: var(--text-primary);
+  padding: 0.3rem 0;
+  position: relative;
+}
+
+/* Remove the bullet point styles */
+.course-list li::before {
+  display: none;
 }
 
 /* Interests Section */
@@ -529,7 +602,7 @@ html {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .semester-container {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -575,13 +648,12 @@ html {
   }
 
   .nav-buttons {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 0.5rem;
   }
 
   .nav-buttons button {
-    width: auto;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
   }
 
   .weather-animation {
@@ -600,7 +672,7 @@ html {
   font-family: 'Fira Code', 'Consolas', monospace;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: var(--accent-color);
+  color: var(--terminal-green);
   opacity: 0.9;
   line-height: 1.4;
 }
@@ -614,16 +686,16 @@ html {
 }
 
 .code-string {
-  color: #059669;
+  color: var(--terminal-yellow);
 }
 
 /* Name title with new font */
 .name-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 4.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 4rem;
   margin-bottom: 1rem;
-  color: var(--text-primary);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(125, 207, 255, 0.3);
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -670,7 +742,7 @@ html {
 }
 
 .timeline-date {
-  color: var(--accent-color);
+  color: var(--terminal-yellow);
   font-size: 0.9rem;
   opacity: 0.8;
 }
@@ -687,27 +759,27 @@ html {
 }
 
 .skill-flag.purple {
-  background: rgba(124, 58, 237, 0.1);
-  border-color: rgba(124, 58, 237, 0.2);
+  background: rgba(125, 207, 255, 0.1);
+  border-color: rgba(125, 207, 255, 0.2);
   color: var(--accent-color);
 }
 
 .skill-flag.rose {
-  background: rgba(244, 63, 94, 0.1);
-  border-color: rgba(244, 63, 94, 0.2);
-  color: #f43f5e;
+  background: rgba(247, 118, 142, 0.1);
+  border-color: rgba(247, 118, 142, 0.2);
+  color: var(--terminal-red);
 }
 
 .skill-flag.amber {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.2);
-  color: #f59e0b;
+  background: rgba(224, 175, 104, 0.1);
+  border-color: rgba(224, 175, 104, 0.2);
+  color: var(--terminal-yellow);
 }
 
 .skill-flag.emerald {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.2);
-  color: #10b981;
+  background: rgba(158, 206, 106, 0.1);
+  border-color: rgba(158, 206, 106, 0.2);
+  color: var(--terminal-green);
 }
 
 .skill-flag.indigo {
@@ -723,12 +795,6 @@ html {
 }
 
 /* Education Section Specific Styles */
-.course-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 .course-item {
   display: flex;
   align-items: center;
@@ -738,6 +804,7 @@ html {
   transition: all 0.2s ease;
   text-decoration: none;
   color: inherit;
+  font-family: 'Fira Code', monospace;
 }
 
 .course-item:hover {
@@ -746,7 +813,7 @@ html {
 }
 
 .course-name {
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 /* Weather Animation */
@@ -982,4 +1049,323 @@ html {
 .timeline-item.hidden {
   opacity: 0;
   transform: translateY(20px);
+}
+
+/* Timeline with CLI style */
+.timeline-header h3 {
+  font-family: 'Fira Code', monospace;
+  color: var(--accent-color);
+}
+
+/* Card titles with CLI style */
+.card h3 {
+  font-family: 'Fira Code', monospace;
+  color: var(--accent-color);
+}
+
+/* Terminal Output Styles */
+.terminal-output {
+  background: var(--bg-primary);
+  border-radius: 8px;
+  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+  font-family: 'Fira Code', monospace;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  position: relative;
+  min-height: 400px;
+  cursor: text;
+}
+
+.terminal-output * {
+  cursor: text;
+}
+
+.terminal-output .skill-item {
+  cursor: pointer;
+}
+
+.terminal-output .skill-item:hover {
+  cursor: pointer;
+}
+
+/* Custom cursor for terminal */
+.terminal-output::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 1.2em;
+  background: var(--terminal-green);
+  animation: blink 1s step-end infinite;
+  pointer-events: none;
+}
+
+/* Add cursor to command line */
+.command-line .command:last-child::after {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--terminal-green);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+.terminal-output::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: var(--bg-secondary);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.terminal-output::after {
+  content: 'skills.txt';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  z-index: 1;
+}
+
+.command-line {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.command-line .prompt {
+  color: var(--terminal-green);
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.command-line .command {
+  color: var(--accent-color);
+  font-family: 'Fira Code', monospace;
+}
+
+.command-line .command:last-child {
+  animation: blink 1s step-end infinite;
+  min-width: 1ch;
+}
+
+.terminal-content {
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 1rem 0;
+  padding: 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.skill-category {
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.skill-category::before {
+  content: '>';
+  color: var(--terminal-green);
+  position: absolute;
+  left: 0;
+  opacity: 0.7;
+}
+
+.category-header {
+  color: var(--terminal-yellow);
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-left: 1rem;
+}
+
+.skill-item {
+  background: rgba(125, 207, 255, 0.1);
+  border: 1px solid var(--accent-color);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: var(--accent-color);
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.skill-item::before {
+  content: '•';
+  color: var(--terminal-green);
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.skill-item:hover {
+  background: var(--accent-color);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Terminal window controls */
+.terminal-controls {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.terminal-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-control.close {
+  background: #ff5f56;
+}
+
+.terminal-control.minimize {
+  background: #ffbd2e;
+}
+
+.terminal-control.maximize {
+  background: #27c93f;
+}
+
+/* Add to nav buttons */
+.nav-buttons button:nth-child(5) {
+  margin-top: 0;
+}
+
+/* Remove custom cursor styles */
+a, button, .nav-buttons button, .skill-item {
+  cursor: pointer;
+}
+
+/* Remove blinking cursor from header */
+.nav-buttons button {
+  position: relative;
+}
+
+.nav-buttons button::after {
+  display: none;
+}
+
+/* Navigation Menu Styles */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.nav-menu button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-menu button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-color);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.nav-menu button:hover {
+  color: var(--bg-primary);
+  transform: translateX(5px);
+  border-color: var(--accent-color);
+}
+
+.nav-menu button:hover::before {
+  opacity: 0.2;
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.nav-text {
+  z-index: 1;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-menu button:hover .nav-icon {
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.75rem;
+  }
+
+  .nav-menu button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+.contact-info {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
 }

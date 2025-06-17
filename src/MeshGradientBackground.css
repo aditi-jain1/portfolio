@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #edf1fb;
+    background-color: var(--bg-primary);
     transform: translateZ(0);
     will-change: transform;
     top: 0;
@@ -21,12 +21,12 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-color: #edf1fb;
+    background-color: var(--bg-primary);
     background-image:
-      radial-gradient(at 96% 74%, #edf1fb(217, 90%, 20%) 0px, transparent 50%),
-      radial-gradient(at 18% 11%, #edf1fb(199, 98%, 15%, 1) 0px, transparent 50%),
-      radial-gradient(at 60% 35%, #edf1fb(210, 96%, 20%, 1) 0px, transparent 50%),
-      radial-gradient(at 23% 59%, #edf1fb(192, 82%, 15%, 1) 0px, transparent 50%);
+      radial-gradient(at 96% 74%, #24283b(125, 207, 255, 0.15) 0px, transparent 50%),
+      radial-gradient(at 18% 11%, rgba(84, 84, 99, 0.1) 0px, transparent 50%),
+      radial-gradient(at 60% 35%, rgba(51, 63, 233, 0.12) 0px, transparent 50%),
+      radial-gradient(at 23% 59%, rgba(42, 44, 153, 0.1) 0px, transparent 50%);
     background-size: 150% 150%;
     filter: blur(40px);
     transform: translateZ(0);
@@ -36,11 +36,15 @@
   }
   
   @keyframes moveBackground {
-    0% { transform: scale(1); }
-    25% { transform: scale(1.2); }
-    50% { transform: scale(1.1); }
-    75% { transform: scale(1.3); }
-    100% { transform: scale(1); }
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
   }
   
   .overlay-text {
